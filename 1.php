@@ -9,3 +9,4 @@ ECHO "Hello World!<br>";
 ?>
 </body>
 </html>
+//http://localhost/5(Global).php
