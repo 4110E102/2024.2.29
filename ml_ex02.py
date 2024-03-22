@@ -17,6 +17,9 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
+# from sklearn.metrics import r2_score
+# r2_test = r2_score(y_test, y_pred)
+# print("R-squared for the test set: ", r2_test)
 
 plt.figure(figsize=(14, 7))
 
