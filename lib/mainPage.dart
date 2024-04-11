@@ -1,7 +1,7 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
+import 'Page1.dart';
 
 List<String> itemName =['簡介','設定','其他','網路'];
 
@@ -59,6 +59,12 @@ class _mainPageState extends State<mainPage> {
                   child: InkWell(
                     onTap: () {
                       print('你按了第$index');
+                      if (index==0){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const page1()),
+                        );
+                      }
                     },
 
                     child: Column(
@@ -83,7 +89,6 @@ class _mainPageState extends State<mainPage> {
     );
   }
 }
-
 
 
 
