@@ -32,14 +32,16 @@ echo "<table border='1'>
 
 //使用 mysqli_fetch_array() 取回資料庫資料
 $row_num=0;//
+$row_num_ex=0;
 while($row = mysqli_fetch_array($result))
 {
   echo "<tr>";
   echo "<td>" . $row['ksu_std_name'] . "</td>";
   echo "<td>" . $row['ksu_std_grade'] .  "</td>";
   
-  if( $row['ksu_std_grade'] < 60)
-  {    echo "<td style=\"background-color:yellow\"> "."補考" .  "</td>";
+  if( $row['ksu_std_grade'] >=80)
+  {    echo "<td style=\"background-color:yellow\"> "."優" .  "</td>";
+      $row_num_ex=$row_num_ex+1;
   }
   else
   {    echo "<td>" . "" .  "</td>";
@@ -49,6 +51,7 @@ while($row = mysqli_fetch_array($result))
 }
 echo "</table>";
 echo $row_num . " records found"."<br/><br/>";//
+echo $row_num_ex . " 個學生優"."<br/><br/>";
 ?>
 <form enctype="multipart/form-data" method="post" action="ksu_select6.html">
 <input type="submit" name="sub" value="返回"/>
