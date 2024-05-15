@@ -1,0 +1,31 @@
+import RPi.GPIO as GPIO
+import time
+Trig = 8
+Echo = 10
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(Trig, GPIO.OUT)
+GPIO.setup(Echo, GPIO.IN)
+
+def trigger_pulse():
+    GPIO.output(Trig, True)
+    time.sleep(0.001)
+    GPIO.output(Trig, False)
+
+def echo(value, timeout):
+    count = timeout
+    while GPIO.input(Echo) != value and count > 0:
+        count = count - 1
+
+def dist():
+    trigger_pulse()
+    echo(True, 5000)
+    b = time.time()
+    echo(False, 5000)
+    e = time.time()
+    dis = (e-b)*340*100/2
+    return dis
+
+while True:
+    print("%f cm" % dist())
+    time.sleep(1)
